@@ -1,11 +1,13 @@
 <script>
 import { store } from './store.js'
 import HeaderApp from './components/HeaderApp.vue'
+import MainApp from './components/MainApp.vue'
 import axios from 'axios'
 
 export default {
   components: {
     HeaderApp,
+    MainApp
   },
   data() {
     return {
@@ -22,7 +24,7 @@ export default {
       })
       .then((resp)=> {
         this.store.seriesArray = resp.data.results
-        console.log('prendo la serie tv:', resp.data.results[0].name);
+        // console.log('prendo la serie tv:', resp.data.results[0].name);
       })
     },
     getMovies() {
@@ -35,7 +37,8 @@ export default {
       })
       .then((resp)=> {
         this.store.moviesArray = resp.data.results
-        console.log('prendo il film:', resp.data.results[0].title);
+        // console.log('prendo il film:', resp.data.results[0].title);
+        console.log(this.store.moviesArray);
       })
     }
   },
@@ -44,7 +47,8 @@ export default {
 
 <template>
   <div>
-    <HeaderApp @search="{getSeries(); getMovies()}" />
+    <HeaderApp @search="{getSeries(); getMovies()}" @keyup.enter="{getSeries(); getMovies()}" />
+    <MainApp />
   </div>
 </template>
 
