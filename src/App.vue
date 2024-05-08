@@ -24,6 +24,19 @@ export default {
         this.store.seriesArray = resp.data.results
         console.log('prendo la serie tv:', resp.data.results[0].name);
       })
+    },
+    getMovies() {
+      axios
+      .get("https://api.themoviedb.org/3/search/movie", {
+        params: {
+          api_key: this.store.apiKey,
+          query: this.store.searchQuery,
+        }
+      })
+      .then((resp)=> {
+        this.store.moviesArray = resp.data.results
+        console.log('prendo il film:', resp.data.results[0].title);
+      })
     }
   },
 }
@@ -31,7 +44,7 @@ export default {
 
 <template>
   <div>
-    <HeaderApp @search="getSeries" />
+    <HeaderApp @search="{getSeries(); getMovies()}" />
   </div>
 </template>
 
