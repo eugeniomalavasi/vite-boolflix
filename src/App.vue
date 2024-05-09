@@ -24,7 +24,7 @@ export default {
       })
       .then((resp)=> {
         this.store.seriesArray = resp.data.results
-        // console.log('prendo la serie tv:', resp.data.results[0].name);
+        console.log(this.store.seriesArray);
       })
     },
     getMovies() {
@@ -37,7 +37,6 @@ export default {
       })
       .then((resp)=> {
         this.store.moviesArray = resp.data.results
-        // console.log('prendo il film:', resp.data.results[0].title);
         console.log(this.store.moviesArray);
       })
     }
