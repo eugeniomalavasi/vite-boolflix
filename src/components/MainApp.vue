@@ -20,11 +20,11 @@ export default {
 <template>
     <div class="container">
         <div class="row">
-            <div class="col" v-for="(movieCard, i) in store.moviesArray">
-                <MainCard :movieCard="movieCard" :movie="movie"/>
+            <div class="col" v-for="(card, i) in store.moviesArray">
+                <MainCard :card="card" :movie="movie"/>
             </div>
-            <div class="col" v-for="(seriesCard, i) in store.seriesArray">
-                <MainCard :seriesCard="seriesCard" :series="series" />
+            <div class="col" v-for="(card, i) in store.seriesArray">
+                <MainCard :card="card" :series="series" />
             </div>
         </div>
     </div>

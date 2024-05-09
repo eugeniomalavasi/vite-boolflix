@@ -2,8 +2,7 @@
 
 export default {
     props: {
-        seriesCard: Object,
-        movieCard: Object,
+        card: Object,
         movie: String,
         series: String
     },
@@ -32,22 +31,13 @@ export default {
 </script>
 
 <template>
-    <div class="card" v-if="seriesCard">
-        <img :src="getPosterPath(seriesCard.poster_path)" alt="">
-        <h3>{{ seriesCard.name }}</h3>
-        <h3>{{ seriesCard.original_name }}</h3>
-        <img class="flag" :src="getImageUrl(seriesCard.original_language)" alt="">
-        <i class="fa-solid fa-star" v-for="num in roundNumb(seriesCard.vote_average)"></i>
-        <i class="fa-regular fa-star" v-for="num in 5 - roundNumb(seriesCard.vote_average)"></i>
-    </div>
-
-    <div class="card" v-if="movieCard">
-        <img :src="getPosterPath(movieCard.poster_path)" class="poster" alt="">
-        <h3>{{ movieCard.title }}</h3>
-        <h3>{{ movieCard.original_name }}</h3>
-        <img class="flag" :src="getImageUrl(movieCard.original_language)" alt="">
-        <i class="fa-solid fa-star" v-for="num in roundNumb(movieCard.vote_average)"></i>
-        <i class="fa-regular fa-star" v-for="num in 5 - roundNumb(movieCard.vote_average)"></i>
+    <div class="card">
+        <img :src="getPosterPath(card.poster_path)" class="poster" alt="">
+        <h3>{{ card.title }}</h3>
+        <h3>{{ card.original_name }}</h3>
+        <img class="flag" :src="getImageUrl(card.original_language)" alt="">
+        <i class="fa-solid fa-star" v-for="num in roundNumb(card.vote_average)"></i>
+        <i class="fa-regular fa-star" v-for="num in 5 - roundNumb(card.vote_average)"></i>
     </div>
 </template>
 
