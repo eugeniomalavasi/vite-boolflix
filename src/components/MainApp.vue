@@ -36,6 +36,7 @@ export default {
                     <h3>original name: {{ movieCard.original_name }}</h3>
                     <img class="flag" :src="getImageUrl(movieCard.original_language)" alt="">
                     <i class="fa-solid fa-star" v-for="num in roundNumb(movieCard.vote_average)"></i>
+                    <i class="fa-regular fa-star" v-for="num in 5 - roundNumb(movieCard.vote_average) "></i>
                 </div>
             </div>
             <div class="col" v-for="(seriesCard, i) in store.seriesArray">
