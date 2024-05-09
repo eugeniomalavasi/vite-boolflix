@@ -6,7 +6,8 @@ export default {
     data() {
         return {
             store,
-            // posterUrl: "https://image.tmdb.org/t/p/w342",
+            series: "series",
+            movie: "movie"
         }
     }, methods: {
 
@@ -20,10 +21,10 @@ export default {
     <div class="container">
         <div class="row">
             <div class="col" v-for="(movieCard, i) in store.moviesArray">
-                <MainCard :movieCard="movieCard" />
+                <MainCard :movieCard="movieCard" :movie="movie"/>
             </div>
             <div class="col" v-for="(seriesCard, i) in store.seriesArray">
-                <MainCard :seriesCard="seriesCard"  />
+                <MainCard :seriesCard="seriesCard" :series="series" />
             </div>
         </div>
     </div>

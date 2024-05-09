@@ -8,6 +8,7 @@
 
 body {
     font-family: "Raleway", sans-serif;
+    background-color: #141414;
 }
 
 img {
@@ -16,4 +17,8 @@ img {
 
 .container {
     margin: 0 auto;
+}
+
+.flex {
+    display: flex;
 }
