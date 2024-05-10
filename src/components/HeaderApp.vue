@@ -14,7 +14,7 @@ export default {
         <div class="flex">
             <img src="../assets/Logonetflix.png" class="logo" alt="">
             <div>
-                <input type="text" v-model="this.store.searchQuery" placeholder="ricerca" class="search">
+                <input type="text" v-model="this.store.searchQuery" placeholder="ricerca" class="search" aria-label="search input">
                 <button @click="$emit('search')">vai</button>
             </div>
         </div>

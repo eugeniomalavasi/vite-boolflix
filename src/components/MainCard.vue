@@ -4,15 +4,18 @@ export default {
     props: {
         card: Object,
         movie: String,
-        series: String
+        series: String,
+        cast: Object
     },
     data() {
         return {
             posterUrl: "https://image.tmdb.org/t/p/w342",
+            moreInfo: false,
         }
-    }, methods: {
+    },
+    methods: {
         getImageUrl(imageName) {
-            if (imageName === "it" || imageName === "fr" || imageName === "en") {
+            if (imageName === "it" || imageName === "fr" || imageName === "en" || imageName === "ja") {
                 return new URL(`../assets/${imageName}.png`, import.meta.url).href;
             } else {
                 return new URL(`../assets/rest.png`, import.meta.url).href;
@@ -39,13 +42,17 @@ export default {
             </div>
 
             <div class="card-back">
-                <h3>{{ card.title }}</h3>
-                <h3>{{ card.original_name }}</h3>
+                <h3 v-if="movie">{{ card.title }}</h3>
+                <h3 v-if="series">{{ card.original_name }}</h3>
                 <p>{{ card.overview }}</p>
                 <img class="flag" :src="getImageUrl(card.original_language)" alt="">
                 <div>
                     <i class="fa-solid fa-star fullstar" v-for="num in roundNumb(card.vote_average)"></i>
                     <i class="fa-regular fa-star fullstar" v-for="num in 5 - roundNumb(card.vote_average)"></i>
+                </div>
+                <button @click="$emit('searchCast', card.id), moreInfo = !moreInfo"> More Info </button>
+                <div class="extra-info">
+                    <p v-if="moreInfo"> {{  }}</p>
                 </div>
             </div>
 
@@ -68,7 +75,7 @@ export default {
         position: relative;
         width: 100%;
         height: 100%;
-        text-align: center;
+        text-align: left;
         transition: transform 0.8s;
         transform-style: preserve-3d;
 
@@ -100,13 +107,16 @@ export default {
             flex-direction: column;
             gap: 1rem;
             padding: 1rem;
+
             h3 {
                 color: orange;
                 font-size: 2rem;
             }
+
             p {
-                font-size: 0.8rem;
+                font-size: 0.7rem;
                 color: black;
+                font-weight: 600;
             }
         }
     }

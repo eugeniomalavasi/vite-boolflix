@@ -1,8 +1,8 @@
 <script>
-import { store } from './store.js'
-import HeaderApp from './components/HeaderApp.vue'
-import MainApp from './components/MainApp.vue'
-import axios from 'axios'
+import { store } from './store.js';
+import HeaderApp from './components/HeaderApp.vue';
+import MainApp from './components/MainApp.vue';
+import axios from 'axios';
 
 export default {
   components: {
@@ -24,7 +24,7 @@ export default {
       })
       .then((resp)=> {
         this.store.seriesArray = resp.data.results
-        console.log(this.store.seriesArray);
+        console.log("array serie:",this.store.seriesArray);
       })
     },
     getMovies() {
@@ -37,9 +37,9 @@ export default {
       })
       .then((resp)=> {
         this.store.moviesArray = resp.data.results
-        console.log(this.store.moviesArray);
+        console.log("array film:",this.store.moviesArray);
       })
-    }
+    },
   },
 }
 </script>
