@@ -1,4 +1,5 @@
 <script>
+import { store } from '../store.js'
 
 export default {
     props: {
@@ -11,6 +12,7 @@ export default {
         return {
             posterUrl: "https://image.tmdb.org/t/p/w342",
             moreInfo: false,
+            store
         }
     },
     methods: {
@@ -28,7 +30,7 @@ export default {
             }
         }, roundNumb(fractNumb) {
             return Math.ceil((fractNumb) / 2);
-        }
+        }, 
     }
 }
 </script>
@@ -51,9 +53,20 @@ export default {
                     <i class="fa-regular fa-star fullstar" v-for="num in 5 - roundNumb(card.vote_average)"></i>
                 </div>
                 <button @click="$emit('searchCast', card.id), moreInfo = !moreInfo"> More Info </button>
-                <div class="extra-info">
-                    <p v-if="moreInfo"> {{  }}</p>
-                </div>
+                <ul v-if="movie" class="extra-info">
+                    <li v-if="moreInfo"> {{ this.store.castFilmArray[0].name}}</li>
+                    <li v-if="moreInfo"> {{ this.store.castFilmArray[1].name}}</li>
+                    <li v-if="moreInfo"> {{ this.store.castFilmArray[2].name}}</li>
+                    <li v-if="moreInfo"> {{ this.store.castFilmArray[3].name}}</li>
+                    <li v-if="moreInfo"> {{ this.store.castFilmArray[4].name}}</li>
+                </ul>
+                <ul v-if="series" class="extra-info">
+                    <li v-if="moreInfo"> {{ this.store.castTvArray[0].name}}</li>
+                    <li v-if="moreInfo"> {{ this.store.castTvArray[1].name}}</li>
+                    <li v-if="moreInfo"> {{ this.store.castTvArray[2].name}}</li>
+                    <li v-if="moreInfo"> {{ this.store.castTvArray[3].name}}</li>
+                    <li v-if="moreInfo"> {{ this.store.castTvArray[4].name}}</li>
+                </ul>
             </div>
 
         </div>
